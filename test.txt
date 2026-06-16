@@ -4,6 +4,7 @@ codes used:
 % touch work.txt
 % nano work.txt
 % :wq
-% git commit
-% git push 
+% git commit -m "Add test.txt to repository"
+% git push
+ 
 
