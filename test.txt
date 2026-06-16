@@ -1,0 +1,9 @@
+This .txt file was created to test updating the github repo from the terminal. 
+codes used:
+% git add.
+% touch work.txt
+% nano work.txt
+% :wq
+% git commit
+% git push 
+
