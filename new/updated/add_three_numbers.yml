@@ -1,0 +1,45 @@
+name: Add three numbers
+
+on:
+  workflow_dispatch:
+    inputs:
+      a:
+        description: 'First number'
+        required: true
+        default: '1'
+      b:
+        description: 'Second number'
+        required: true
+        default: '2'
+      c:
+        description: 'Third number'
+        required: true
+        default: '3'
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Add three numbers
+        env:
+          A: ${{ github.event.inputs.a }}
+          B: ${{ github.event.inputs.b }}
+          C: ${{ github.event.inputs.c }}
+        run: |
+          python - <<'PY'
+          import os
+
+          def add_three(a, b, c):
+              return a + b + c
+
+          a = int(os.environ.get('A', '0'))
+          b = int(os.environ.get('B', '0'))
+          c = int(os.environ.get('C', '0'))
+
+          print(f"Sum: {add_three(a, b, c)}")
+          PY
